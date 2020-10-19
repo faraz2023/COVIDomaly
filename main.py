@@ -35,7 +35,7 @@ def main():
 
     if(FLAGS.train):
         solver.train(G=G, dataset=dataset, epochs=FLAGS.epoch, batch_size=FLAGS.batch, lr= FLAGS.lr,
-                     model_name=model_name,snapshot_number=2, load=False, snapshot=True)
+                     model_name=model_name,snapshot_number=FLAGS.snapshot_number, load=FLAGS.loadModel, snapshot=FLAGS.doSnapshot)
 
 
 def str2bool(v):
@@ -61,9 +61,14 @@ if __name__ == '__main__':
     parser.add_argument('-n', '--normal', nargs='+', help='Indicate what is Normal', required=True)
     parser.add_argument('--train', type=str2bool, default=True, help='Training or just Testing')
     parser.add_argument('--saveMemory', type=str2bool, default=True, help='Keeps only the most updated model params file')
+    parser.add_argument('--doSnapshot', type=str2bool, default=True, help='Whether to run snapshots on the test set while training.')
+    parser.add_argument('--loadModel', type=str2bool, default=True, help='Whether to load a previously trained model.'
+                                                                         'Model must be available at Models/<modelname>/params/params-epoch<#>-G.')
 
     parser.add_argument('--k_fold', type=int, default=3, help='The number of folds for Kfold Crossvalidation')
     parser.add_argument('--n_exp', type=int, default=1, help='The number of fold to validate')
+    parser.add_argument('--snapshot_number', type=int, default=10, help='At each snapshot_number of epochs in the training'
+                                                                        ' process a snapshot on the test set is made and the model is saved')
 
     FLAGS, unparsed = parser.parse_known_args()
     main()
