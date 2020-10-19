@@ -25,8 +25,6 @@ def main():
     print('use_cuda:', use_cuda)
     if use_cuda:
         G = G.cuda()
-    G.apply(init_weights)
-
 
 
     model_name = "01-f{}of{}-NandP".format(FLAGS.n_exp, FLAGS.k_fold)
@@ -34,9 +32,15 @@ def main():
         model_name = "02-f{}of{}-Nonly".format(FLAGS.n_exp, FLAGS.k_fold)
 
     if(FLAGS.train):
-        solver.train(G=G, dataset=dataset, epochs=FLAGS.epoch, batch_size=FLAGS.batch, lr= FLAGS.lr,
-                     model_name=model_name,snapshot_number=FLAGS.snapshot_number, load=FLAGS.loadModel, snapshot=FLAGS.doSnapshot)
+        print("Training...")
+        G.apply(init_weights)
 
+        if(FLAGS.train):
+            solver.train(G=G, dataset=dataset, epochs=FLAGS.epoch, batch_size=FLAGS.batch, lr= FLAGS.lr,
+                         model_name=model_name,snapshot_number=FLAGS.snapshot_number, load=FLAGS.loadModel, snapshot=FLAGS.doSnapshot)
+    else:
+        print("Testing")
+        solver.test(G, dataset, model_name)
 
 def str2bool(v):
     if isinstance(v, bool):

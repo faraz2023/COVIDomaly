@@ -383,3 +383,24 @@ def snapshot_onTest(G, dataset, epoch, dir_info):
 
 
 
+def test(G, dataset, model_name):
+    dir_info = prepare_directory(model_name)
+
+    pre_trained_models = os.listdir(dir_info['params'])
+
+    param_G = os.path.join(dir_info['params'], pre_trained_models[-1])
+    print('=======')
+    print(param_G)
+    print('=======')
+
+    G.load_state_dict(torch.load(param_G))
+    print("model loaded succesffully")
+    epoch_offset = int(re.findall(r'\d+', pre_trained_models[-1])[0])
+    print("---> Model was previously trained on {}-epochs".format(epoch_offset))
+
+    dataset.reset_idx()
+    G.eval()
+    snapshot_onTest(G, dataset, epoch_offset, dir_info)
+    if (torch.cuda.is_available()):
+        torch.cuda.empty_cache()
+    G.train()
