@@ -1,5 +1,5 @@
 # Anomaly Detection Approach to Identify Early Cases in a Pandemic using Chest X-rays
-If you use this code, please use the following citation - Shehroz S. Khan, Faraz Khosbakhtian, Ahmad Bilal Ashraf, Anomaly Detection Approach to Identify Early Cases in aPandemic using Chest X-rays, 34th Canadian Conference on Artificial Intelligence, BC, 2021
+If you use this code, please use the following citation - *Shehroz S. Khan, Faraz Khosbakhtian, Ahmad Bilal Ashraf, Anomaly Detection Approach to Identify Early Cases in aPandemic using Chest X-rays, 34th Canadian Conference on Artificial Intelligence, BC, 2021*
 
 ## Background 
 
