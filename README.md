@@ -12,7 +12,7 @@ For a detailed description of COVIDx dataset and the methodology behind COVIDoma
 
 The data used for this network is a modified version of [COVIDx](https://github.com/lindawangg/COVID-Net/blob/master/docs/COVIDx.md). I have downsampled the images into  **224 * 224**.
 
-You can download the modified dataset [here](https://drive.google.com/file/d/1OUvFc96sHbbzRbfQrRbyU4XCeWD6NAU3/view?usp=sharing)
+You can download the modified dataset [here](https://drive.google.com/file/d/1HPfpYyCxeDQFj0y6fc1eAiCTA79PCtx_/view?usp=sharing)
 
 Please make sure `resized_COVIDx.zip` is placed at the same directory as the repository's root directory (at the same place as the `main.py`). 
 
